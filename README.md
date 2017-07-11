@@ -18,9 +18,8 @@ Or install it yourself as:
 
     $ gem install citrus_payments
     
-In the initialiser add authkey:
+In the initialiser add:
 
-Below info can be found on citrus dashboard
 
 ```ruby
 CitrusPayments.configure do |config|
@@ -38,7 +37,18 @@ TODO: Planned features
 
 ## Phase 1
 ### PAYMENT MAKING
-  Generate signature
+  **Generate signature**
+         
+  Send payment details like this to generate signature     
+  
+  _payment_details = {
+           orderAmount: '27',
+           merchantTxnId: 'unique_merchant_txn_id',
+           currency: 'inr'
+       }_
+       
+ ` CitrusPayments::Utility.generate_signature(payment_details)`
+
   
   Decode signature
   
