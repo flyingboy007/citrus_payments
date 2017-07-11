@@ -1,6 +1,7 @@
 require "citrus_payments/version"
 require "citrus_payments/configuration"
 require "errors/configuration"
+require "citrus_payments/utility"
 
 
 module CitrusPayments
