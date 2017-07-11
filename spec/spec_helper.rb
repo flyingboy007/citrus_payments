@@ -10,6 +10,17 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  #For adding auth key
+  #Before begining to run test please set the below environments
+  config.before(:all) do
+    CitrusPayments.configure do |config|
+      config.base_url = ENV['CITRUS_BASE_URL']
+      config.vanity_url = ENV['CITRUS_VANITY_URL']
+      config.access_key = ENV['CITRUS_ACCESS_KEY']
+      config.secret_key = ENV['CITRUS_SECRET_KEY']
+    end
+  end
+
 
   #for mocking external services requests
   require 'webmock/rspec'

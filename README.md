@@ -17,6 +17,20 @@ And then execute:
 Or install it yourself as:
 
     $ gem install citrus_payments
+    
+In the initialiser add authkey:
+
+Below info can be found on citrus dashboard
+
+```ruby
+CitrusPayments.configure do |config|
+#will improve on this after finishing a layout so that it will dynamically change base_url between sandbox and production
+  config.base_url =  "Put your citrus base_url here" 
+  config.vanity_url = "Put your citrus vanity_url here"
+  config.access_key = "Put your citrus access_key here"
+  config.secret_key = "Put your citrus secret_key here"
+end
+```    
 
 ## Usage
 
@@ -25,18 +39,21 @@ TODO: Planned features
 ## Phase 1
 ### PAYMENT MAKING
   Generate signature
+  
   Decode signature
+  
   Response Handling
 
 ## Phase 2
 ### SPLITPAY
-  a) User Authentication-This API authenticates the ‘Merchant’ and returns an ‘auth_token’. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system
+######  a) User Authentication
+   This API authenticates the ‘Merchant’ and returns an ‘auth_token’. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system
 ######  b) Seller API 
    1)Create - Merchant can on board his sellers
-    2)Update  - Merchant can update existing sellers
-    3)Get Seller - Merchant can get existing seller details
-    4)Get All Seller - Merchant can get all the existing seller details created by him 
-    5)Get Seller Account Balance(seems deprecated from citrus side)
+   2)Update  - Merchant can update existing sellers
+   3)Get Seller - Merchant can get existing seller details
+   4)Get All Seller - Merchant can get all the existing seller details created by him 
+   5)Get Seller Account Balance(seems deprecated from citrus side)
 ######  c) Transaction APIs
  
    1) Add Transaction - Merchant can add transaction using this API
