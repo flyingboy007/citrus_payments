@@ -54,9 +54,10 @@ TODO: Planned features
 
   
   Decode signature
-  
-  Response Handling
-
+   _Pass response from citrus_
+  `CitrusPayments::Utility.verify_signature(payment_response)`
+   Returns true or false
+     If _true_ valid else if _false_ the request is tampered and should not continue processing
 ## Phase 2
 ### SPLITPAY
 ######  a) User Authentication
@@ -74,10 +75,10 @@ TODO: Planned features
    3) Get All Transactions - Merchant can get all transaction details using this API
    4) Get Transaction Details - This API will fetch transaction details based on merchant transaction reference number
 ###### d) Split APIs 
-    1) Split Transaction- Merchant can split his transaction between one or multiple sellers and provide details like seller share amount and merchant fee amount for this transaction
-    2) Get One Transactions Split - Merchant can query splits performed on a specific transaction
-    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
-    4) Update Transactions Split - Merchant can update his earlier splits using this API, update on splits can be performed only if funds are not released for this transaction
+   1) Split Transaction- Merchant can split his transaction between one or multiple sellers and provide details like seller share amount and merchant fee amount for this transaction
+   2) Get One Transactions Split - Merchant can query splits performed on a specific transaction
+   3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
+   4) Update Transactions Split - Merchant can update his earlier splits using this API, update on splits can be performed only if funds are not released for this transaction
 ######  e) Merchant APIs
   Get Merchant Account Balance
   
