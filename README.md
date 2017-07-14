@@ -36,29 +36,34 @@ end
 
 ## Usage
 
-TODO: Planned features
-
-## Phase 1
 ### PAYMENT MAKING
+
   **Generate signature**
          
-  Send payment details like this to generate signature     
+  Send payment details like this to `generate signature`     
   
-  _payment_details = {
-           orderAmount: '27',
-           merchantTxnId: 'unique_merchant_txn_id',
-           currency: 'inr'
-       }_
+
+      payment_details = {
+               orderAmount: '27',
+               merchantTxnId: 'unique_merchant_txn_id',
+               currency: 'inr'
+           }
        
  ` CitrusPayments::Utility.generate_signature(payment_details)`
+ 
 
   
-  Decode signature
-   _Pass response from citrus_
+  **Decode signature**
+  
+  send response from citrus to verify the signature
+   
   `CitrusPayments::Utility.verify_signature(payment_response)`
-   Returns true or false
-     If _true_ valid else if _false_ the request is tampered and should not continue processing
-## Phase 2
+        Returns `true` or `false`
+     If `true` proceeds with processing else if `false` the request is tampered and should not continue processing
+
+TODO: Planned features(**Below features are planned and will be added as implemented**)
+
+
 ### SPLITPAY
 ######  a) User Authentication
    This API authenticates the ‘Merchant’ and returns an ‘auth_token’. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system
@@ -94,15 +99,15 @@ A refund in a marketplace ecosystem is a `two` step process:
  Case 2) Merchant collecting the refund back from the seller who sold the good/service.
  
  **Case1** is taken care by the regular Payment Gateway Refund API
-   Refund API provides functionality to refund the amount of successful transaction
+   *Refund API provides functionality to refund the amount of successful transaction*
    
- **Case2** (2 posibilities)
-  1)already been split , but is either awaiting release/ has already been released.
-     A split refund is to be performed on such transaction
-      Split Refunds- when a transaction has already been split. This API can be called post payout to sellers too(which will adjust in subsequent payouts)
-  2) still un-split in the Citrus Splitpay system.
-     A trans refund is to be performed in this scenario. 
-      Transaction Refund-called for Refunds when a transaction has not been split yet.
+ **Case2** (*2 posibilities*)
+  1)already been `split` , but is either awaiting release/ has already been released.
+     A `split refund` is to be performed on such transaction
+      `Split Refunds`- when a transaction has already been split. This API can be called post payout to sellers too(which will adjust in subsequent payouts)
+  2) still `un-split` in the Citrus Splitpay system.
+     A `trans refund` is to be performed in this scenario. 
+      `Transaction Refund`-called for Refunds when a transaction has `not` been `split` yet.
 
 
 

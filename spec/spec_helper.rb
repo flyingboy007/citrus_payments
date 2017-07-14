@@ -25,4 +25,8 @@ RSpec.configure do |config|
   #for mocking external services requests
   require 'webmock/rspec'
   WebMock.disable_net_connect!(allow_localhost: true)
+
+  #for focusing only one test
+  #config.filter_run :focus => true
+
 end
