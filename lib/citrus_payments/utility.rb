@@ -13,20 +13,23 @@ module CitrusPayments
 
     #decode signature
     def self.verify_signature(attributes)
+      #convert to symbolized hash for consistancy
+      symbolised_attributes=Hash[attributes.map {|k, v| [k.to_sym, v]}]
+      
       secret_key=CitrusPayments.configuration.secret_key
-      verification_data= attributes[:tx_id]\
-        + attributes[:tx_status]\
-        + attributes[:amount]\
-        + attributes[:pgTxnNo]\
-        + attributes[:issuer_ref_no]\
-        + attributes[:auth_id_code]\
-        + attributes[:first_name]\
-        + attributes[:last_name]\
-        + attributes[:pg_resp_code]\
-        + attributes[:address_zip]
+      verification_data= symbolised_attributes[:TxId]\
+        + symbolised_attributes[:TxStatus]\
+        + symbolised_attributes[:amount]\
+        + symbolised_attributes[:pgTxnNo]\
+        + symbolised_attributes[:issuerRefNo]\
+        + symbolised_attributes[:authIdCode]\
+        + symbolised_attributes[:firstName]\
+        + symbolised_attributes[:lastName]\
+        + symbolised_attributes[:pgRespCode]\
+        + symbolised_attributes[:addressZip]
       signature=hmac_sha1(verification_data, secret_key)
       #If signature matches the one from citrus true else false (its been tampered)
-      if signature==attributes[:signature]
+      if signature==symbolised_attributes[:signature]
         true
       else
         false
