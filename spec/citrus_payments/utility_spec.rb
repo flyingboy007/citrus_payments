@@ -56,7 +56,7 @@ describe CitrusPayments::Utility do
   end
 
   private
-  #helper method
+  #helper method for making digest
   def hmac_sha1(data, secret)
     require 'base64'
     require 'cgi'
