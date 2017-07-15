@@ -62,6 +62,7 @@ end
      If `true` proceeds with processing else if `false` the request is tampered and should not continue processing
 
 ### SPLITPAY(Marketplace)
+
 ######  a) User Authentication
  This API authenticates the `Merchant` and returns an `auth_token`. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system.
     
