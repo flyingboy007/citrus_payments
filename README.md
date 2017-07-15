@@ -1,5 +1,4 @@
-# CitrusPayments [![Build Status](https://travis-ci.org/flyingboy007/citrus_payments.svg?branch=master)](https://travis-ci.org/flyingboy007/citrus_payments)
-
+# CitrusPayments [![Build Status](https://travis-ci.org/flyingboy007/citrus_payments.svg?branch=master)](https://travis-ci.org/flyingboy007/citrus_payments) [![Coverage Status](https://coveralls.io/repos/github/flyingboy007/citrus_payments/badge.svg?branch=master)](https://coveralls.io/github/flyingboy007/citrus_payments?branch=master)
 A ruby gem for using the Citrus REST API
 
 ## Installation
