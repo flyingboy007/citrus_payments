@@ -61,12 +61,33 @@ end
         Returns `true` or `false`
      If `true` proceeds with processing else if `false` the request is tampered and should not continue processing
 
+### SPLITPAY(Marketplace)
+
+######  a) User Authentication
+ This API authenticates the `Merchant` and returns an `auth_token`. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system.
+    
+
+    response=CitrusPayments::Marketplace::Authentication.new_merchant_auth_token
+
+---
+
+    
+    #success response  {"auth_token"=>"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMFQxMDo0MToyMy4zNjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.W_LhFZl-h9F5j3NhH3os3zEi8BNRkXl3MnwniveHRb4"}
+    
+    #error response
+    {"error_id"=>"0", "error_category"=>"application", "error_description"=>"Invalid user"}
+
+
+
+
+
+
+ 
+
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
 
 ### SPLITPAY
-######  a) User Authentication
-   This API authenticates the ‘Merchant’ and returns an ‘auth_token’. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system
 ######  b) Seller API 
    1)Create - Merchant can on board his sellers
    2)Update  - Merchant can update existing sellers
