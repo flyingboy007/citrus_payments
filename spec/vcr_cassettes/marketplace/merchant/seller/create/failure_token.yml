@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://splitpaysbox.citruspay.com/marketplace/auth/
+    uri: https://splitpaysbox.citruspay.com/marketplace/seller/
     body:
       encoding: UTF-8
-      string: '{"access_key":"hhhh","secret_key":"e4806e194aec00f17006feeba7"}'
+      string: '{"seller_name":"Fake_Name","seller_add1":"Fake_Street","seller_city":"Fake_City","seller_state":"Fake_state","seller_country":"Fake_country","zip":"690001","seller_mobile":"1234567899","seller_ifsc_code":"ICIC0000010","seller_acc_num":"Fake_account_number","active":1,"payoutmode":"NEFT","selleremail":"fake1@gmail.com"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -17,13 +17,15 @@ http_interactions:
       - splitpaysbox.citruspay.com
       Content-Type:
       - application/json
+      Auth-Token:
+      - wrong_auth_token
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 15 Jul 2017 10:41:54 GMT
+      - Sun, 16 Jul 2017 09:46:26 GMT
       X-Powered-By:
       - Express
       Access-Control-Allow-Origin:
@@ -33,19 +35,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"52-f6957236"
+      - W/"58-544ad0e5"
       Via:
       - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '84'
+      - '90'
       Connection:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"error_id":"0","error_category":"application","error_description":"Invalid
-        user"}'
+      string: '{"error_id":"4","error_category":"application","error_description":"Invalid
+        user Token"}'
     http_version: 
-  recorded_at: Sat, 15 Jul 2017 10:41:54 GMT
+  recorded_at: Sun, 16 Jul 2017 09:46:26 GMT
 recorded_with: VCR 3.0.3

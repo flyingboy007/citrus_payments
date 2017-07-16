@@ -78,6 +78,19 @@ end
     {"error_id"=>"0", "error_category"=>"application", "error_description"=>"Invalid user"}
 
 
+######  b) Seller API 
+   1)Create - Merchant can on board his sellers
+  
+
+      response=CitrusPayments::Marketplace::Seller.create(auth_token, citrus_fields)
+
+--------
+
+    success_response
+    {:sellerid=>3260}
+    
+    failure_response
+    {:error_id=>"4", :error_category=>"application", :error_description=>"Invalid user Token"}
 
 
 
@@ -89,7 +102,6 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 
 ### SPLITPAY
 ######  b) Seller API 
-   1)Create - Merchant can on board his sellers
    2)Update  - Merchant can update existing sellers
    3)Get Seller - Merchant can get existing seller details
    4)Get All Seller - Merchant can get all the existing seller details created by him 

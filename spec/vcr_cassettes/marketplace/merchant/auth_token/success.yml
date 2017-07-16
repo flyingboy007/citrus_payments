@@ -5,7 +5,7 @@ http_interactions:
     uri: https://splitpaysbox.citruspay.com/marketplace/auth/
     body:
       encoding: UTF-8
-      string: '{"access_key":"1DYQI8S5EE5UM9FGFHDA","secret_key":"e4806e194aec00f170066e194aec"}'
+      string: '{"access_key":"1DYQI8S5EE5UM97AJ","secret_key":"e4806e196feebadb771abaa754fe6"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 15 Jul 2017 10:41:23 GMT
+      - Sun, 16 Jul 2017 07:05:14 GMT
       X-Powered-By:
       - Express
       Access-Control-Allow-Origin:
@@ -33,18 +33,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"e9-181260d9"
+      - W/"e9-70c91f9a"
       Via:
       - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '226'
+      - '225'
       Connection:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciJ9.eyJhY2Nlc3N2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMFQxMDo0MToyMy4zNjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.W_LhFZl-h9F5j3NhH3os3zEi8BNRkXl3MnwniveHRb4"}'
+      string: '{"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMVQwNzowNToxNC42MjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.L1BVi_0fx7utnes7FPq4mw_coHGL1QPfSOyqTn93TFE"}'
     http_version: 
-  recorded_at: Sat, 15 Jul 2017 10:41:23 GMT
+  recorded_at: Sun, 16 Jul 2017 07:05:14 GMT
 recorded_with: VCR 3.0.3
