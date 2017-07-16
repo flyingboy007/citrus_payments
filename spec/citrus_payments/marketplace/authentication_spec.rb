@@ -14,8 +14,6 @@ describe CitrusPayments::Marketplace::Authentication do
       VCR.use_cassette("marketplace/merchant/auth_token/failure") do
         CitrusPayments.configuration.access_key="hhhh"
         auth_token=CitrusPayments::Marketplace::Authentication.new_merchant_auth_token
-        puts auth_token
-
         expect(auth_token['error_description']).to_not be_nil
       end
     end
