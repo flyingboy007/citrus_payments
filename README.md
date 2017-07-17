@@ -63,7 +63,7 @@ end
 
 ### SPLITPAY(Marketplace)
 
-######  a) User Authentication
+####  **a) User Authentication**
  This API authenticates the `Merchant` and returns an `auth_token`. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system.
     
 
@@ -78,11 +78,24 @@ end
     {"error_id"=>"0", "error_category"=>"application", "error_description"=>"Invalid user"}
 
 
-######  b) Seller API 
-   1)Create - Merchant can on board his sellers
+####  **b) Seller API** 
+   **1)Create - Merchant can on board his sellers**
   
 
-      response=CitrusPayments::Marketplace::Seller.create(auth_token, citrus_fields)
+      response=CitrusPayments::Marketplace::Seller.create(auth_token,  {
+            'seller_name' => "Fake_Name",
+            'seller_add1' => "Fake_Street",
+            'seller_city' => "Fake_City",
+            'seller_state' => "Fake_state",
+            'seller_country' => 'Fake_country',
+            'zip' => "690001",
+            'seller_mobile' => "1234567899",
+            'seller_ifsc_code' => "ICIC0000011",
+            'seller_acc_num' => "Fake_account_number",
+            'active' => 1,
+            'payoutmode' => 'NEFT',
+            'selleremail' => "fake1@gmail.com"
+            })
 
 --------
 
@@ -90,10 +103,39 @@ end
     {:sellerid=>3260}
     
     failure_response
+    
     {:error_id=>"4", :error_category=>"application", :error_description=>"Invalid user Token"}
 
 
 
+   **2)Update  - Merchant can update existing sellers**
+
+    response=CitrusPayments::Marketplace::Seller.create(auth_token, {
+            'seller_name' => "Fake_Name",
+            'seller_add1' => "Fake_Street",
+            'seller_city' => "Fake_City",
+            'seller_state' => "Fake_state",
+            'seller_country' => 'Fake_country',
+            'zip' => "690001",
+            'seller_mobile' => "1234567899",
+            'seller_ifsc_code' => "ICIC0000011",
+            'seller_acc_num' => "Fake_account_number",
+            'active' => 1,
+            'payoutmode' => 'NEFT',
+            'selleremail' => "fake1@gmail.com",
+            'seller_id' => 3260
+        })
+
+
+--------
+
+    
+    success_response
+    {:sellerid=>3260, :status=>"success"}
+    
+    failure_response
+    
+    {:error_id=>"4", :error_category=>"application", :error_description=>"Invalid user Token"}
 
  
 
@@ -102,7 +144,6 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 
 ### SPLITPAY
 ######  b) Seller API 
-   2)Update  - Merchant can update existing sellers
    3)Get Seller - Merchant can get existing seller details
    4)Get All Seller - Merchant can get all the existing seller details created by him 
    5)Get Seller Account Balance(seems deprecated from citrus side)
