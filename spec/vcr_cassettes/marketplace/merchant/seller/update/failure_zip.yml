@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://splitpaysbox.citruspay.com/marketplace/seller/
+    body:
+      encoding: UTF-8
+      string: '{"seller_name":"Fake_Name","seller_add1":"Fake_Street","seller_city":"Fake_City","seller_state":"Fake_state","seller_country":"Fake_country","zip":"690001","seller_mobile":"1234567899","seller_ifsc_code":"ICIC0000011","seller_acc_num":"Fake_account_number","active":1,"payoutmode":"NEFT","selleremail":"fake1@gmail.com","seller_id":3260,"zip":"invalid_zip_sellerinvalid_zip_sellerinvalid_zip_sellerinvalid_zip_seller"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - splitpaysbox.citruspay.com
+      Content-Type:
+      - application/json
+      Auth-Token:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMVQwNzowNToxNC42MjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.L1BVi_0fx7utnes7FPq4mw_coHGL1QPfSOyqTn93TFE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Jul 2017 05:38:27 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"124-96900dde"
+      Via:
+      - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '170'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"property":"instance.zip","message":"does not meet maximum length
+        of 12","schema":{"type":"string","required":true,"minLength":1,"maxLength":12},"instance":"invalid_zip_sellerinvalid_zip_sellerinvalid_zip_sellerinvalid_zip_seller","stack":"instance.zip
+        does not meet maximum length of 12"}]'
+    http_version: 
+  recorded_at: Mon, 17 Jul 2017 05:38:28 GMT
+recorded_with: VCR 3.0.3
