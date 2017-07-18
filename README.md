@@ -211,8 +211,6 @@ end
             
     {"error_id":"4","error_category":"application","error_description":"Invalid_user Token"}
 
-TODO: Planned features(**Below features are planned and will be added as implemented**)
-
 
  **d) Split APIs**
 
@@ -241,6 +239,37 @@ TODO: Planned features(**Below features are planned and will be added as impleme
     {"error_id":"313","error_category":"application","error_description":"Invalid
             Transaction Id!!!"}
             
+   4) **Update Transactions Split** - *Merchant can update his earlier splits using this API, update on splits can be performed only if funds are not released for this transaction*  
+
+    transaction_update_attributes={
+        "split_id": 92437,
+        "seller_id": 3260,
+        "merchant_split_ref": "ref",
+        "split_amount": 12,
+        "fee_amount": 4,
+        "auto_payout": 0
+    }
+
+        response=CitrusPayments::Marketplace::Split.update(auth_token, transaction_update_attributes)
+
+
+--------
+
+    
+    success_response
+        
+    {"split_id":92437,"changedRows":1}
+        
+    failure_response
+        
+    {"error_id":"330","error_category":"application","error_description":"Invalid
+        Split Id!!!"}
+    
+
+TODO: Planned features(**Below features are planned and will be added as implemented**)
+
+
+      
 
 ### SPLITPAY
 ######  b) Seller API 
@@ -254,7 +283,7 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 ###### d) Split APIs 
    2) Get One Transactions Split - Merchant can query splits performed on a specific transaction
    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
-   4) Update Transactions Split - Merchant can update his earlier splits using this API, update on splits can be performed only if funds are not released for this transaction
+
 ######  e) Merchant APIs
   Get Merchant Account Balance
   
