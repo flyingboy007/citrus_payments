@@ -82,20 +82,21 @@ end
    **1)Create - Merchant can on board his sellers**
   
 
-      response=CitrusPayments::Marketplace::Seller.create(auth_token,  {
-            'seller_name' => "Fake_Name",
-            'seller_add1' => "Fake_Street",
-            'seller_city' => "Fake_City",
-            'seller_state' => "Fake_state",
-            'seller_country' => 'Fake_country',
-            'zip' => "690001",
-            'seller_mobile' => "1234567899",
-            'seller_ifsc_code' => "ICIC0000011",
-            'seller_acc_num' => "Fake_account_number",
-            'active' => 1,
-            'payoutmode' => 'NEFT',
-            'selleremail' => "fake1@gmail.com"
-            })
+    seller_attributes={
+                'seller_name' => "Fake_Name",
+                'seller_add1' => "Fake_Street",
+                'seller_city' => "Fake_City",
+                'seller_state' => "Fake_state",
+                'seller_country' => 'Fake_country',
+                'zip' => "690001",
+                'seller_mobile' => "1234567899",
+                'seller_ifsc_code' => "ICIC0000011",
+                'seller_acc_num' => "Fake_account_number",
+                'active' => 1,
+                'payoutmode' => 'NEFT',
+                'selleremail' => "fake1@gmail.com"
+                }
+          response=CitrusPayments::Marketplace::Seller.create(auth_token, seller_attributes)
 
 --------
 
@@ -110,21 +111,23 @@ end
 
    **2)Update  - Merchant can update existing sellers**
 
-    response=CitrusPayments::Marketplace::Seller.create(auth_token, {
-            'seller_name' => "Fake_Name",
-            'seller_add1' => "Fake_Street",
-            'seller_city' => "Fake_City",
-            'seller_state' => "Fake_state",
-            'seller_country' => 'Fake_country',
-            'zip' => "690001",
-            'seller_mobile' => "1234567899",
-            'seller_ifsc_code' => "ICIC0000011",
-            'seller_acc_num' => "Fake_account_number",
-            'active' => 1,
-            'payoutmode' => 'NEFT',
-            'selleremail' => "fake1@gmail.com",
-            'seller_id' => 3260
-        })
+    seller_attributes={
+                'seller_name' => "Fake_Name",
+                'seller_add1' => "Fake_Street",
+                'seller_city' => "Fake_City",
+                'seller_state' => "Fake_state",
+                'seller_country' => 'Fake_country',
+                'zip' => "690001",
+                'seller_mobile' => "1234567899",
+                'seller_ifsc_code' => "ICIC0000011",
+                'seller_acc_num' => "Fake_account_number",
+                'active' => 1,
+                'payoutmode' => 'NEFT',
+                'selleremail' => "fake1@gmail.com",
+                'seller_id' => 3260
+            }
+        
+        response=CitrusPayments::Marketplace::Seller.create(auth_token, seller_attributes)
 
 
 --------
@@ -137,6 +140,25 @@ end
     
     {:error_id=>"4", :error_category=>"application", :error_description=>"Invalid user Token"}
 
+
+
+   **3)Get Seller - Merchant can get existing seller details**
+
+    seller_id=3260
+    
+    response=CitrusPayments::Marketplace::Seller.get_seller(auth_token, seller_id)
+
+--------
+
+    success_response
+    
+    {"seller_id":3260,"seller_name":"Fake_Name","seller_add1":"Fake_Street","seller_add2":"","seller_city":"Fake_City","seller_state":"Fake_state","seller_country":"Fake_country","seller_zip":"690001","business_url":"undefined","selleremail":"fake1@gmail.com","seller_ifsc_code":"ICIC0000011","seller_acc_num":"Fake_account_number","payoutmode":"NEFT","seller_account_id":4699,"seller_active":1,"seller_mobile":"1234567899","seller_mobile_verified":0,"sms_notify":0,"seller_email_verified":0,"email_notify":0,"kyc_status":0,"is_international":0,"currency":"INR"}
+    
+    failure_response
+    
+    {:error_id=>"210", :error_category=>"application", :error_description=>"No
+        sellers found!!!"}
+
  
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
@@ -144,7 +166,7 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 
 ### SPLITPAY
 ######  b) Seller API 
-   3)Get Seller - Merchant can get existing seller details
+
    4)Get All Seller - Merchant can get all the existing seller details created by him 
    5)Get Seller Account Balance(seems deprecated from citrus side)
 ######  c) Transaction APIs
