@@ -214,17 +214,44 @@ end
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
 
+ **d) Split APIs**
+
+   **1) Split Transaction:** *Merchant can split his transaction between one or multiple sellers and provide details like seller share amount and merchant fee amount for this transaction*
+   
+    transaction_attributes={
+        "trans_id": 105573, #citrus payment trans_id
+        "seller_id":3260,
+        "merchant_split_ref":"ref",
+        "split_amount":12,
+        "fee_amount":2,
+        "auto_payout":0
+    }
+        response=CitrusPayments::Marketplace::Split.create(auth_token, transaction_attributes)
+
+
+--------
+
+    
+    success_response
+        
+        {"split_id":92437,"trans_id":105573,"merchant_split_ref":"ref"}
+        
+    failure_response
+        
+    {"error_id":"313","error_category":"application","error_description":"Invalid
+            Transaction Id!!!"}
+            
+
 ### SPLITPAY
 ######  b) Seller API 
    5)Get Seller Account Balance(seems deprecated from citrus side and of no use)
-######  c) Transaction APIs
+######  c) Transaction APIs(only needed to call when using another payment gateway for making transaction)
  
    1) Add Transaction - Merchant can add transaction using this API
    2) Get One Transaction - Merchant can get transaction details using this API
    3) Get All Transactions - Merchant can get all transaction details using this API
    4) Get Transaction Details - This API will fetch transaction details based on merchant transaction reference number
 ###### d) Split APIs 
-   1) Split Transaction- Merchant can split his transaction between one or multiple sellers and provide details like seller share amount and merchant fee amount for this transaction
    2) Get One Transactions Split - Merchant can query splits performed on a specific transaction
    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
    4) Update Transactions Split - Merchant can update his earlier splits using this API, update on splits can be performed only if funds are not released for this transaction

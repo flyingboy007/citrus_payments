@@ -4,6 +4,7 @@ require "errors/configuration"
 require "citrus_payments/utility"
 require "citrus_payments/marketplace/authentication"
 require "citrus_payments/marketplace/seller"
+require "citrus_payments/marketplace/split"
 
 
 module CitrusPayments
