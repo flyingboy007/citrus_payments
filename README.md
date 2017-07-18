@@ -159,16 +159,64 @@ end
     {:error_id=>"210", :error_category=>"application", :error_description=>"No
         sellers found!!!"}
 
- 
+
+
+   **4)Get All Sellers - Merchant can get all the existing seller details created by him**
+    
+
+    response=CitrusPayments::Marketplace::Seller.get_all_sellers(auth_token)
+
+--------
+
+     
+    
+       success_response
+            
+            [{
+        "seller_id": 463,
+        "seller_name": "Smith Taylor",
+        "seller_add1": "City Light",
+        "seller_add2": "Link Road",
+        "seller_city": "Mumbai",
+        "seller_state": "MH",
+        "seller_country": "India",
+        "seller_zip": "41234",
+        "business_url": "test@test.com",
+        "selleremail": "smithtaylor@gmail.com",
+        "seller_ifsc_code": "ICIC0001469",
+        "seller_acc_num": "00225367",
+        "payoutmode": "NEFT",
+        "seller_account_id": 71,
+        "seller_active": "1"
+        }
+        {
+        "seller_id": 464,
+        "seller_name": "John Smith",
+        "seller_add1": "City Garden",
+        "seller_add2": "Link Road",
+        "seller_city": "Mumbai",
+        "seller_state": "MH",
+        "seller_country": "India",
+        "seller_zip": "41234",
+        "business_url": "test@test.com",
+        "selleremail": "johnsmith@gmail.com",
+        "seller_ifsc_code": "ICIC0001206",
+        "seller_acc_num": "123456",
+        "payoutmode": "WALLET",
+        "seller_account_id": 72,
+        "seller_active": "1"
+        }]
+            
+     failure_response
+            
+    {"error_id":"4","error_category":"application","error_description":"Invalid_user Token"}
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
 
 ### SPLITPAY
 ######  b) Seller API 
-
-   4)Get All Seller - Merchant can get all the existing seller details created by him 
-   5)Get Seller Account Balance(seems deprecated from citrus side)
+   5)Get Seller Account Balance(seems deprecated from citrus side and of no use)
 ######  c) Transaction APIs
  
    1) Add Transaction - Merchant can add transaction using this API
@@ -224,3 +272,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 ## Code of Conduct
 
 Everyone interacting in the CitrusPayments project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/flyingboy007/citrus_payments/blob/master/CODE_OF_CONDUCT.md).
+

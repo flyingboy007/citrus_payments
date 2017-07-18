@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 18 Jul 2017 12:03:19 GMT
+      - Tue, 18 Jul 2017 13:01:26 GMT
       X-Powered-By:
       - Express
       Access-Control-Allow-Origin:
@@ -51,5 +51,5 @@ http_interactions:
       string: '{"error_id":"4","error_category":"application","error_description":"Invalid
         user Token"}'
     http_version: 
-  recorded_at: Tue, 18 Jul 2017 12:03:19 GMT
+  recorded_at: Tue, 18 Jul 2017 13:01:27 GMT
 recorded_with: VCR 3.0.3

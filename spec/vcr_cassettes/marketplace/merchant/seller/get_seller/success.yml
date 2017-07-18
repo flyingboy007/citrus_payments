@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 18 Jul 2017 12:05:58 GMT
+      - Tue, 18 Jul 2017 13:01:28 GMT
       X-Powered-By:
       - Express
       Access-Control-Allow-Origin:
@@ -50,5 +50,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"seller_id":3260,"seller_name":"Fake_Name","seller_add1":"Fake_Street","seller_add2":"","seller_city":"Fake_City","seller_state":"Fake_state","seller_country":"Fake_country","seller_zip":"690001","business_url":"undefined","selleremail":"fake1@gmail.com","seller_ifsc_code":"ICIC0000011","seller_acc_num":"Fake_account_number","payoutmode":"NEFT","seller_account_id":4699,"seller_active":1,"seller_mobile":"1234567899","seller_mobile_verified":0,"sms_notify":0,"seller_email_verified":0,"email_notify":0,"kyc_status":0,"is_international":0,"currency":"INR"}'
     http_version: 
-  recorded_at: Tue, 18 Jul 2017 12:05:59 GMT
+  recorded_at: Tue, 18 Jul 2017 13:01:28 GMT
 recorded_with: VCR 3.0.3

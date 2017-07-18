@@ -67,16 +67,22 @@ module CitrusPayments
         request["auth_token"] = merchant_auth_token
         request["content-type"] = 'application/json'
         response = http.request(request)
-        parsed_response=JSON.parse(response.body, :symbolize_names => true)
+        JSON.parse(response.body, :symbolize_names => true)
+      end
 
-        #If input errors response will be in array in weird format
-        if parsed_response.is_a?(Array)
-          parsed_response.first[:property].slice!("instance.") #removes instance. string from response
-          #making a response similar to other errors
-          altered_response={error_id: "7", error_category: "stack", error_description: parsed_response.first[:property]+" "+parsed_response.first[:message]}
-        else
-          parsed_response
-        end
+      def self.get_all_sellers(merchant_auth_token)
+        uri = URI.parse(CitrusPayments.configuration.base_url+"marketplace/seller/")
+
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+        request = Net::HTTP::Get.new(uri)
+        request["cache-control"] = 'no-cache'
+        request["auth_token"] = merchant_auth_token
+        request["content-type"] = 'application/json'
+        response = http.request(request)
+        JSON.parse(response.body, :symbolize_names => true)
       end
 
     end
