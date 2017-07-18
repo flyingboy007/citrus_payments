@@ -92,7 +92,7 @@ describe CitrusPayments::Marketplace::Seller do
       end
     end
 
-    it "creates seller if all fields present" do
+    it "gets seller details when valid seller" do
       VCR.use_cassette("marketplace/merchant/seller/get_seller/success") do
         response=CitrusPayments::Marketplace::Seller.get_seller(valid_auth_token, seller_id)
         expect(response[:seller_id]).to eq(seller_id)
@@ -100,10 +100,25 @@ describe CitrusPayments::Marketplace::Seller do
     end
 
     it "returns error if invalid seller" do
-      VCR.use_cassette("marketplace/merchant/seller/get_seller/failure_zip") do
+      VCR.use_cassette("marketplace/merchant/seller/get_seller/failure_seller") do
         invalid_seller_id="662626"
         response=CitrusPayments::Marketplace::Seller.get_seller(valid_auth_token, invalid_seller_id)
         expect(response[:error_description]).to eq("No sellers found!!!")
+      end
+    end
+  end
+  context "get all sellers" do
+    it "returns error if invalid token" do
+      VCR.use_cassette("marketplace/merchant/seller/get_all_sellers/failure_token") do
+        response=CitrusPayments::Marketplace::Seller.get_all_sellers("wrong_auth_token")
+        expect(response[:error_description]).to eq("Invalid user Token")
+      end
+    end
+
+    it "returns all sellers details as array" do
+      VCR.use_cassette("marketplace/merchant/seller/get_all_sellers/success") do
+        response=CitrusPayments::Marketplace::Seller.get_all_sellers(valid_auth_token)
+        expect(response).to be_kind_of(Array)
       end
     end
   end
