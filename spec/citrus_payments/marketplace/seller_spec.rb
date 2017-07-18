@@ -1,8 +1,7 @@
 require_relative '../../spec_helper'
 
 describe CitrusPayments::Marketplace::Seller do
-  valid_auth_token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMVQwNzowNToxNC42MjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.L1BVi_0fx7utnes7FPq4mw_coHGL1QPfSOyqTn93TFE"
-
+  valid_auth_token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yM1QxMTo1NzoxMC43NDBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.3lo5IdaU75fxpNQWxyvKley-J5snq31-CEhXfkM93MI"
   context "create seller" do
     seller_attributes= {
         'seller_name' => "Fake_Name",
@@ -83,4 +82,31 @@ describe CitrusPayments::Marketplace::Seller do
       end
     end
   end
+
+  context "get seller" do
+    seller_id= 3260
+    it "returns error if invalid token" do
+      VCR.use_cassette("marketplace/merchant/seller/get_seller/failure_token") do
+        response=CitrusPayments::Marketplace::Seller.get_seller("wrong_auth_token", seller_id)
+        expect(response[:error_description]).to eq("Invalid user Token")
+      end
+    end
+
+    it "creates seller if all fields present" do
+      VCR.use_cassette("marketplace/merchant/seller/get_seller/success") do
+        response=CitrusPayments::Marketplace::Seller.get_seller(valid_auth_token, seller_id)
+        expect(response[:seller_id]).to eq(seller_id)
+      end
+    end
+
+    it "returns error if invalid seller" do
+      VCR.use_cassette("marketplace/merchant/seller/get_seller/failure_zip") do
+        invalid_seller_id="662626"
+        response=CitrusPayments::Marketplace::Seller.get_seller(valid_auth_token, invalid_seller_id)
+        expect(response[:error_description]).to eq("No sellers found!!!")
+      end
+    end
+  end
+
+
 end

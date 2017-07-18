@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://splitpaysbox.citruspay.com/marketplace/auth/
+    method: get
+    uri: https://splitpaysbox.citruspay.com/marketplace/seller/662626
     body:
-      encoding: UTF-8
-      string: '{"access_key":"1DYQI8S5EE5UM97AJYKA","secret_key":"e4806e194aec00f17006feebadb771abaa754fe6"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -15,6 +15,10 @@ http_interactions:
       - Ruby
       Host:
       - splitpaysbox.citruspay.com
+      Cache-Control:
+      - no-cache
+      Auth-Token:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yM1QxMTo1NzoxMC43NDBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.3lo5IdaU75fxpNQWxyvKley-J5snq31-CEhXfkM93MI
       Content-Type:
       - application/json
   response:
@@ -23,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 18 Jul 2017 11:57:10 GMT
+      - Tue, 18 Jul 2017 12:04:21 GMT
       X-Powered-By:
       - Express
       Access-Control-Allow-Origin:
@@ -33,18 +37,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"e9-d131ca51"
+      - W/"5b-7ce96d7b"
       Via:
       - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '227'
+      - '93'
       Connection:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yM1QxMTo1NzoxMC43NDBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.3lo5IdaU75fxpNQWxyvKley-J5snq31-CEhXfkM93MI"}'
+      string: '{"error_id":"210","error_category":"application","error_description":"No
+        sellers found!!!"}'
     http_version: 
-  recorded_at: Tue, 18 Jul 2017 11:57:10 GMT
+  recorded_at: Tue, 18 Jul 2017 12:04:21 GMT
 recorded_with: VCR 3.0.3
