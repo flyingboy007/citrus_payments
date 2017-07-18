@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://splitpaysbox.citruspay.com/marketplace/split/
+    body:
+      encoding: UTF-8
+      string: '{"split_id":"invalid_split_idinvalid_split_idinvalid_split_idinvalid_split_id","seller_id":3260,"merchant_split_ref":"ref","split_amount":12,"fee_amount":4,"auto_payout":0}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - splitpaysbox.citruspay.com
+      Content-Type:
+      - application/json
+      Auth-Token:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yM1QxMTo1NzoxMC43NDBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.3lo5IdaU75fxpNQWxyvKley-J5snq31-CEhXfkM93MI
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Jul 2017 22:30:34 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"105-ca58ec2a"
+      Via:
+      - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '152'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"property":"instance.split_id","message":"is not of a type(s) number","schema":{"type":"number","required":true,"minimum":1},"instance":"invalid_split_idinvalid_split_idinvalid_split_idinvalid_split_id","stack":"instance.split_id
+        is not of a type(s) number"}]'
+    http_version: 
+  recorded_at: Tue, 18 Jul 2017 22:30:34 GMT
+recorded_with: VCR 3.0.3
