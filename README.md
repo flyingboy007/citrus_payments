@@ -265,6 +265,28 @@ end
     {"error_id":"330","error_category":"application","error_description":"Invalid
         Split Id!!!"}
     
+    
+   **2) Get One Transactions Split** - *Merchant can query splits performed on a specific transaction*
+
+    split_id=3260
+    
+    response=CitrusPayments::Marketplace::Seller.get_split(auth_token, split_id)
+
+--------
+
+     success_response
+        
+        {"split_id":92437,"trans_id":105573,"seller_id":3260,"merchant_split_ref":"ref","split_amount":11,"fee_amount":1,"auto_payout":0,"req_datetime":"2017-07-18T18:10:25.000Z","fundReleased":[],"refunds":[]}
+        
+     failure_response
+        
+    {"error_id":"322","error_category":"application","error_description":"No
+            split information found!!!"}
+
+
+
+
+
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
@@ -281,7 +303,7 @@ TODO: Planned features(**Below features are planned and will be added as impleme
    3) Get All Transactions - Merchant can get all transaction details using this API
    4) Get Transaction Details - This API will fetch transaction details based on merchant transaction reference number
 ###### d) Split APIs 
-   2) Get One Transactions Split - Merchant can query splits performed on a specific transaction
+
    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
 
 ######  e) Merchant APIs
