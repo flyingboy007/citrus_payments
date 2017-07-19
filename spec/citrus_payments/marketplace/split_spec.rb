@@ -14,7 +14,7 @@ describe CitrusPayments::Marketplace::Split do
     }
 
 
-    it "creates split" do
+    it "creates split and gets split_id" do
       VCR.use_cassette("marketplace/merchant/split/create/success") do
         response=CitrusPayments::Marketplace::Split.create(valid_auth_token, transaction_attributes)
         expect(response[:split_id]).to_not be_nil
@@ -59,7 +59,7 @@ describe CitrusPayments::Marketplace::Split do
     }
 
 
-    it "creates split" do
+    it "updates existing split" do
       VCR.use_cassette("marketplace/merchant/split/update/success") do
         response=CitrusPayments::Marketplace::Split.update(valid_auth_token, transaction_update_attributes)
         expect(response[:changedRows]).to eq(1)
@@ -92,4 +92,35 @@ describe CitrusPayments::Marketplace::Split do
     end
 
   end
+
+
+  #Gets
+  context "GET: one split" do
+    split_id=92437
+
+    it "updates existing split" do
+      VCR.use_cassette("marketplace/merchant/split/get_one/success") do
+        response=CitrusPayments::Marketplace::Split.get_split(valid_auth_token, split_id)
+        expect(response[:split_amount]).not_to be nil
+      end
+    end
+
+
+    it "returns error if wrong split_id" do
+      VCR.use_cassette("marketplace/merchant/split/get_one/failure_wrong_split") do
+        split_id=33333
+        response=CitrusPayments::Marketplace::Split.get_split(valid_auth_token, split_id)
+        expect(response[:error_description]).to eq("No split information found!!!")
+      end
+    end
+
+    it "returns error if invalid token" do
+      VCR.use_cassette("marketplace/merchant/split/get_one/failure_token") do
+        response=CitrusPayments::Marketplace::Split.get_split("wrong_auth_token", split_id)
+        expect(response[:error_description]).to eq("Invalid user Token")
+      end
+    end
+  end
+
+
 end
