@@ -283,8 +283,23 @@ end
     {"error_id":"322","error_category":"application","error_description":"No
             split information found!!!"}
 
+ 
 
+###e) Merchant APIs
+----------------
+**Get Merchant Account Balance**-  *Merchant can query his balance*
 
+       response=CitrusPayments::Merchant.get_balance(auth_token)
+
+--------
+
+     success_response
+        
+      {"account_id":3173,"account_balance":3680}
+        
+     failure_response
+     
+    {"error_id":"4","error_category":"application","error_description":"Invalid user Token"}
 
 
 
@@ -306,8 +321,7 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 
    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
 
-######  e) Merchant APIs
-  Get Merchant Account Balance
+
   
 ###### f) Settlement API(only needed in development) 
 

@@ -1,8 +1,5 @@
 module CitrusPayments
   module Marketplace
-    require 'net/http'
-    require 'uri'
-    require 'json'
     class Seller
       def self.create(merchant_auth_token, seller_attributes)
         uri = URI.parse(CitrusPayments.configuration.base_url+'marketplace/seller/')
