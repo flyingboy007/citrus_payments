@@ -1,6 +1,7 @@
 require "citrus_payments/version"
 require "citrus_payments/configuration"
 require "errors/configuration"
+require "errors/input"
 require "citrus_payments/utility"
 require "citrus_payments/marketplace/authentication"
 require "citrus_payments/marketplace/seller"
