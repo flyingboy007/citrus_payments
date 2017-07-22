@@ -46,6 +46,12 @@ describe CitrusPayments::Marketplace::Split do
         expect(response[:error_description]).to eq("Invalid Transaction Id!!!")
       end
     end
+
+    it "throws error if any value is nil" do
+      transaction_attributes_with_nil=transaction_attributes.clone
+      transaction_attributes_with_nil[:split_amount]=nil
+      expect {CitrusPayments::Marketplace::Split.create(valid_auth_token, transaction_attributes_with_nil)}.to raise_error(CitrusPayments::Errors::Input)
+    end
   end
 
   context "update split" do
@@ -91,6 +97,12 @@ describe CitrusPayments::Marketplace::Split do
       end
     end
 
+    it "throws error if any value is nil" do
+      transaction_attributes_with_nil=transaction_update_attributes.clone
+      transaction_attributes_with_nil[:split_amount]=nil
+      expect {CitrusPayments::Marketplace::Split.update(valid_auth_token, transaction_attributes_with_nil)}.to raise_error(CitrusPayments::Errors::Input)
+    end
+
   end
 
 
@@ -104,7 +116,6 @@ describe CitrusPayments::Marketplace::Split do
         expect(response[:split_amount]).not_to be nil
       end
     end
-
 
     it "returns error if wrong split_id" do
       VCR.use_cassette("marketplace/merchant/split/get_one/failure_wrong_split") do
@@ -120,6 +131,7 @@ describe CitrusPayments::Marketplace::Split do
         expect(response[:error_description]).to eq("Invalid user Token")
       end
     end
+
   end
 
 

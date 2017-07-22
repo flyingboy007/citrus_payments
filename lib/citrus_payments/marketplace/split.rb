@@ -5,6 +5,9 @@ module CitrusPayments
     require 'json'
     class Split
       def self.create(auth_token, transaction_attributes)
+
+        raise CitrusPayments::Errors::Input, "Citrus #{self.find_blank_value(transaction_attributes)} missing!" if self.has_blank?(transaction_attributes)
+
         uri = URI.parse(ENV['CITRUS_BASE_URL']+'marketplace/split/')
         request = Net::HTTP::Post.new(uri)
         request.content_type = 'application/json'
@@ -31,6 +34,8 @@ module CitrusPayments
       end
 
       def self.update(auth_token, transaction_attributes)
+        raise CitrusPayments::Errors::Input, "Citrus #{self.find_blank_value(transaction_attributes)} missing!" if self.has_blank?(transaction_attributes)
+
         uri = URI.parse(ENV['CITRUS_BASE_URL']+'marketplace/split/')
         request = Net::HTTP::Put.new(uri)
         request.content_type = 'application/json'
@@ -70,6 +75,17 @@ module CitrusPayments
         response = http.request(request)
         JSON.parse(response.body, :symbolize_names => true)
       end
+
+      #Helper methods
+      #look for nil values
+      def self.has_blank?(attributes)
+        attributes.values.any? {|v| v.nil?}
+      end
+
+      #if value is nil return that key
+      def self.find_blank_value(attributes)
+        attributes.each {|key, value| return key if !value}
+      end
+    end
   end
-end
 end
