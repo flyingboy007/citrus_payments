@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://splitpaysbox.citruspay.com/marketplace/search/pgsettlement/33333
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - splitpaysbox.citruspay.com
+      Cache-Control:
+      - no-cache
+      Auth-Token:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yOVQwNzo1MjozNC43NjBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.5bH5RceSByzwUkbATZadnno7-zffE_Oq-L21OrZnAPA
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Jul 2017 11:45:53 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"7b-6f453f88"
+      Via:
+      - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '119'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_id":"518","error_category":"application","error_description":"No
+        settlement details found for this transaction!!!"}'
+    http_version: 
+  recorded_at: Mon, 24 Jul 2017 11:45:54 GMT
+recorded_with: VCR 3.0.3

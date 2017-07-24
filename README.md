@@ -317,7 +317,7 @@ end
         fee_amount: 2,
         settlement_date_time: "2017-07-24 13:14:00"
     }   
-    response=CitrusPayments::Marketplace::Settlement.create(valid_auth_token, settlement_attributes)
+    response=CitrusPayments::Marketplace::Settlement.create(auth_token, settlement_attributes)
 
 --------
 
@@ -328,6 +328,25 @@ end
      failure_response
      
     {"error_id":"7","error_category":"application","error_description":"settlement_amount is not of a type(s) number"}
+
+
+ **g) Get Settlement Status** 
+*Before releasing funds against any split created it is important that the settlement has happened on that transaction*
+ *For enquiring whether a split is ready to release, you can call this method and if settlement_id is returned it means you are good to release funds against the split/splits under that transaction.*
+
+     trans_id=110696  response=CitrusPayments::Marketplace::Settlement.get_status(auth_token, trans_id)
+
+--------
+
+     success_response
+        
+      {"settlement_id":38273,"trans_id":110696,"settlement_ref":"5821744918","trans_source":"CITRUS","settlement_amount":11,"fee_amount":1,"settlement_date_time":"24/07/2017
+        17:10:18","req_date_time":"24/07/2017 17:10:20"}
+        
+     failure_response
+     
+    {"error_id":"518","error_category":"application","error_description":"No
+        settlement details found for this transaction!!!"}
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
@@ -352,7 +371,6 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 ###### f) Settlement API(only needed in development) 
 
 Settlement API(only needed in development and automatic in production mode)
-######  g) Get Settlement Status 
 ######  h) Transactions Release Funds
 
 ###### i) Refunds (This section needs more planning)

@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://splitpaysbox.citruspay.com/marketplace/search/pgsettlement/33333
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - splitpaysbox.citruspay.com
+      Cache-Control:
+      - no-cache
+      Auth-Token:
+      - wrong_auth_token
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Jul 2017 11:45:55 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"58-544ad0e5"
+      Via:
+      - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '90'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_id":"4","error_category":"application","error_description":"Invalid
+        user Token"}'
+    http_version: 
+  recorded_at: Mon, 24 Jul 2017 11:45:56 GMT
+recorded_with: VCR 3.0.3
