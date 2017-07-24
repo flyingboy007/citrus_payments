@@ -67,7 +67,7 @@ end
  This API authenticates the `Merchant` and returns an `auth_token`. This token is a mandatory parameter in the header and is required to run any subsequent APIs of Marketplace system.
     
 
-    response=CitrusPayments::Marketplace::Authentication.new_merchant_auth_token
+    CitrusPayments::Marketplace::Authentication.new_merchant_auth_token
 
 ---
 
@@ -96,7 +96,7 @@ end
                 'payoutmode' => 'NEFT',
                 'selleremail' => "fake1@gmail.com"
                 }
-          response=CitrusPayments::Marketplace::Seller.create(auth_token, seller_attributes)
+          CitrusPayments::Marketplace::Seller.create(auth_token, seller_attributes)
 
 --------
 
@@ -127,7 +127,7 @@ end
                 'seller_id' => 3260
             }
         
-        response=CitrusPayments::Marketplace::Seller.create(auth_token, seller_attributes)
+        CitrusPayments::Marketplace::Seller.create(auth_token, seller_attributes)
 
 
 --------
@@ -146,7 +146,7 @@ end
 
     seller_id=3260
     
-    response=CitrusPayments::Marketplace::Seller.get_seller(auth_token, seller_id)
+    CitrusPayments::Marketplace::Seller.get_seller(auth_token, seller_id)
 
 --------
 
@@ -164,7 +164,7 @@ end
    **4)Get All Sellers - Merchant can get all the existing seller details created by him**
     
 
-    response=CitrusPayments::Marketplace::Seller.get_all_sellers(auth_token)
+    CitrusPayments::Marketplace::Seller.get_all_sellers(auth_token)
 
 --------
 
@@ -224,7 +224,7 @@ end
         "fee_amount":2,
         "auto_payout":0
     }
-        response=CitrusPayments::Marketplace::Split.create(auth_token, transaction_attributes)
+        CitrusPayments::Marketplace::Split.create(auth_token, transaction_attributes)
 
 
 --------
@@ -250,7 +250,7 @@ end
         "auto_payout": 0
     }
 
-        response=CitrusPayments::Marketplace::Split.update(auth_token, transaction_update_attributes)
+        CitrusPayments::Marketplace::Split.update(auth_token, transaction_update_attributes)
 
 
 --------
@@ -270,7 +270,7 @@ end
 
     split_id=3260
     
-    response=CitrusPayments::Marketplace::Seller.get_split(auth_token, split_id)
+    CitrusPayments::Marketplace::Seller.get_split(auth_token, split_id)
 
 --------
 
@@ -289,7 +289,7 @@ end
 ----------------
 **Get Merchant Account Balance**-  *Merchant can query his balance*
 
-       response=CitrusPayments::Merchant.get_balance(auth_token)
+       CitrusPayments::Merchant.get_balance(auth_token)
 
 --------
 
@@ -317,7 +317,7 @@ end
         fee_amount: 2,
         settlement_date_time: "2017-07-24 13:14:00"
     }   
-    response=CitrusPayments::Marketplace::Settlement.create(auth_token, settlement_attributes)
+    CitrusPayments::Marketplace::Settlement.create(auth_token, settlement_attributes)
 
 --------
 
@@ -331,10 +331,14 @@ end
 
 
  **g) Get Settlement Status** 
+
 *Before releasing funds against any split created it is important that the settlement has happened on that transaction*
+
  *For enquiring whether a split is ready to release, you can call this method and if settlement_id is returned it means you are good to release funds against the split/splits under that transaction.*
 
-     trans_id=110696  response=CitrusPayments::Marketplace::Settlement.get_status(auth_token, trans_id)
+     trans_id=110696  
+     
+     CitrusPayments::Marketplace::Settlement.get_status(auth_token, trans_id)
 
 --------
 
@@ -347,6 +351,23 @@ end
      
     {"error_id":"518","error_category":"application","error_description":"No
         settlement details found for this transaction!!!"}
+
+ **h) Transactions Release Funds**
+ 
+*Funds are released based on the respective split_id*
+
+     split_id=97434
+            CitrusPayments::Marketplace::Transaction.release(auth_token, split_id)
+
+--------
+
+     success_response
+        
+      {"releasefund_ref":37267,"trans_id":110696,"split_id":97434,"seller_id":2153,"amount":11,"payoutmode":"NEFT","payout":"true"}
+        
+     failure_response
+     
+    {"error_id":"7","error_category":"application","error_description":"split_id is not of a type(s) number"}
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
@@ -367,11 +388,6 @@ TODO: Planned features(**Below features are planned and will be added as impleme
    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
 
 
-  
-###### f) Settlement API(only needed in development) 
-
-Settlement API(only needed in development and automatic in production mode)
-######  h) Transactions Release Funds
 
 ###### i) Refunds (This section needs more planning)
 A refund in a marketplace ecosystem is a `two` step process:
