@@ -301,7 +301,33 @@ end
      
     {"error_id":"4","error_category":"application","error_description":"Invalid user Token"}
 
+**f) Settlement API(only needed in development)**
 
+*Settlement API(only needed in development as this is done by citrus in production mode)*
+     
+ You don’t have to call this API on live environment as this is automatically supposed to Run before T+1 (5.00 pm) timeframe, where T is the day of transaction. 
+ 
+ *You can only release funds once settlement is successfully run.*
+
+    settlement_attributes={
+        trans_id: 105573,
+        settlement_ref: "Ref#CITFAKE",
+        trans_source: 'CITRUS',
+        settlement_amount: 10,
+        fee_amount: 2,
+        settlement_date_time: "2017-07-24 13:14:00"
+    }   
+    response=CitrusPayments::Marketplace::Settlement.create(valid_auth_token, settlement_attributes)
+
+--------
+
+     success_response
+        
+      {"settlement_id":38268,"trans_id":105573}
+        
+     failure_response
+     
+    {"error_id":"7","error_category":"application","error_description":"settlement_amount is not of a type(s) number"}
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
