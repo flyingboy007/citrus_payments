@@ -4,7 +4,7 @@ describe CitrusPayments::Marketplace::Settlement do
   valid_auth_token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yOVQwNzo1MjozNC43NjBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.5bH5RceSByzwUkbATZadnno7-zffE_Oq-L21OrZnAPA"
 
   #Only needed in development
-  context "create split" do
+  context "create settlement" do
     settlement_attributes={
         trans_id: 105573,
         settlement_ref: "Ref#CITFAKE",
@@ -36,5 +36,31 @@ describe CitrusPayments::Marketplace::Settlement do
       end
     end
 
+  end
+
+  context "get settlement" do
+    trans_id=110696
+
+    it "gets settlement details" do
+      VCR.use_cassette("marketplace/merchant/settlement/get_details/success") do
+        response=CitrusPayments::Marketplace::Settlement.get_status(valid_auth_token, trans_id)
+        expect(response[:settlement_id]).not_to be nil
+      end
+    end
+
+    it "returns error if wrong transaction_id" do
+      VCR.use_cassette("marketplace/merchant/settlement/get_details/failure_wrong_transsactionumber") do
+        trans_id=33333
+        response=CitrusPayments::Marketplace::Settlement.get_status(valid_auth_token, trans_id)
+        expect(response[:error_description]).to eq("No settlement details found for this transaction!!!")
+      end
+    end
+
+    it "returns error if invalid token" do
+      VCR.use_cassette("marketplace/merchant/settlement/get_details/failure_token") do
+        response=CitrusPayments::Marketplace::Settlement.get_status("wrong_auth_token", trans_id)
+        expect(response[:error_description]).to eq("Invalid user Token")
+      end
+    end
   end
 end
