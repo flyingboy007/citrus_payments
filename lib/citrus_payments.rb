@@ -11,6 +11,7 @@ require "citrus_payments/merchant"
 require "citrus_payments/marketplace/authentication"
 require "citrus_payments/marketplace/seller"
 require "citrus_payments/marketplace/split"
+require "citrus_payments/marketplace/settlement"
 
 
 module CitrusPayments
