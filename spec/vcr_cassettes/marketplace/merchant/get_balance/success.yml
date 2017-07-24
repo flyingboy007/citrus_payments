@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://splitpaysbox.citruspay.com/marketplace/merchant/getbalance/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - splitpaysbox.citruspay.com
+      Cache-Control:
+      - no-cache
+      Auth-Token:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yM1QxMTo1NzoxMC43NDBaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.3lo5IdaU75fxpNQWxyvKley-J5snq31-CEhXfkM93MI
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Jul 2017 20:44:08 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2a-d43f33de"
+      Via:
+      - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '53'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"account_id":3173,"account_balance":3680}'
+    http_version: 
+  recorded_at: Sat, 22 Jul 2017 20:44:08 GMT
+recorded_with: VCR 3.0.3

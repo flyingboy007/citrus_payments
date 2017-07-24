@@ -1,8 +1,5 @@
 module CitrusPayments
   module Marketplace
-    require 'net/http'
-    require 'uri'
-    require 'json'
     class Authentication
       def self.new_merchant_auth_token
 

@@ -1,8 +1,5 @@
 module CitrusPayments
   module Marketplace
-    require 'net/http'
-    require 'uri'
-    require 'json'
     class Split
       def self.create(auth_token, transaction_attributes)
 
