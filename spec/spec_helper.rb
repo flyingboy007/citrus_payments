@@ -5,6 +5,7 @@ Coveralls.wear!
 require "bundler/setup"
 require "citrus_payments"
 require "support/vcr_setup"
+require "support/custom_helpers"
 
 
 RSpec.configure do |config|

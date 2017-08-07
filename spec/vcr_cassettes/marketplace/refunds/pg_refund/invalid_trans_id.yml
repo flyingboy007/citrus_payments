@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandboxadmin.citruspay.com/api/v2/txn/refund
+    body:
+      encoding: UTF-8
+      string: '{"merchantTxnId":"RD-0320837687","pgTxnId":"6789994221172191","rrn":"7219386355","authIdCode":"999999","currencyCode":"INR","amount":"12","txnType":"Refund","merchantTxnId":"..."}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - sandboxadmin.citruspay.com
+      Content-Type:
+      - application/json
+      Signature:
+      - '09aaf70d149d936697168f4114bae861ea01ed8a'
+      Access-Key:
+      - 1DYQI8S5EE5UM97AJYKA
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Mon, 07 Aug 2017 14:01:38 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Set-Cookie:
+      - JSESSIONID=5A1774B6BD8BDF1459CBF6B619F6FBD7.adminnode; Path=/; Secure; HttpOnly
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS, DELETE, PUT
+      Access-Control-Max-Age:
+      - '3600'
+      Access-Control-Allow-Headers:
+      - Authorization,Origin,X-Requested-With,Content-Type,Accept,merchantAccessKey,requestSignature
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><noOfTxnsToDisplay>0</noOfTxnsToDisplay><respCode>401</respCode><respMsg>Bad
+        Request:Invalid signature key</respMsg><totalTxnCount>0</totalTxnCount></response>
+    http_version: 
+  recorded_at: Mon, 07 Aug 2017 14:04:53 GMT
+recorded_with: VCR 3.0.3

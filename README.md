@@ -369,6 +369,48 @@ end
      
     {"error_id":"7","error_category":"application","error_description":"split_id is not of a type(s) number"}
 
+
+###### **i) Refunds** 
+A refund in a marketplace ecosystem is a `two` step process:
+ Case 1) Merchant Refunding the customer who made the payment.
+ Case 2) Merchant collecting the refund back from the seller who sold the good/service.
+ 
+ **Case1** is taken care by the regular *Payment Gateway Refund*
+ 
+ **Payment Gateway Refund** 
+
+       transaction_attributes={
+        merchantTxnId: "RD-0320837687",
+        pgTxnId: "6789994221172191",
+        rrn: "7219386355",
+        authIdCode: "999999",
+        currencyCode: "INR",
+        amount: "12",
+        txnType: "Refund"
+    }
+    
+    //signature generation
+    #:TODO below helper method pending
+    data="merchantAccessKey=" + "citrus_access_key" + "&transactionId=" + transaction_attributes[:merchantTxnId] + "&amount=" + transaction_attributes[:amount];
+
+    signature=CitrusPayments.hmac_sha1(data, citrus_secret_key)
+   
+    //send request response=CitrusPayments::Marketplace::Refunds::PgRefund.create(signature, transaction_attributes)
+
+
+
+--------
+
+     success_response
+        
+      {:amount=>"12.0", :authIdCode=>"999999", :currency=>"INR", :merchantRefundTxId=>"CRX1708071356364540978", :merchantTxnId=>"RD-0320837687", :paymentId=>"-1", :pgTxnId=>"429630291972191", :RRN=>"721917222533", :respCode=>"0", :respMsg=>"Transaction successful", :transactionId=>"RD-0320837687"}
+
+        
+     failure_response
+     
+    {:noOfTxnsToDisplay=>"0", :respCode=>"401", :respMsg=>"Bad Request:Invalid signature key", :totalTxnCount=>"0"}
+
+
 TODO: Planned features(**Below features are planned and will be added as implemented**)
 
 
@@ -393,9 +435,6 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 A refund in a marketplace ecosystem is a `two` step process:
  Case 1) Merchant Refunding the customer who made the payment.
  Case 2) Merchant collecting the refund back from the seller who sold the good/service.
- 
- **Case1** is taken care by the regular Payment Gateway Refund API
-   *Refund API provides functionality to refund the amount of successful transaction*
    
  **Case2** (*2 posibilities*)
   1)already been `split` , but is either awaiting release/ has already been released.
