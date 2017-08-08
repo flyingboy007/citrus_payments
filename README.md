@@ -37,9 +37,9 @@ end
 
 ### PAYMENT MAKING
 
-  **Generate signature**
+  **Generate signature for making payment**
          
-  Send payment details like this to `generate signature`     
+  Send payment details like this to `generate a signature`     
   
 
       payment_details = {
@@ -48,7 +48,7 @@ end
                currency: 'inr'
            }
        
- ` CitrusPayments::Utility.generate_signature(payment_details)`
+ ` CitrusPayments::Utility.generate_payment_signature(payment_details)`
  
 
   
@@ -56,7 +56,7 @@ end
   
   send response from citrus to verify the signature
    
-  `CitrusPayments::Utility.verify_signature(payment_response)`
+  `CitrusPayments::Utility.verify_payment_signature(payment_response)`
         Returns `true` or `false`
      If `true` proceeds with processing else if `false` the request is tampered and should not continue processing
 
@@ -285,7 +285,7 @@ end
 
  
 
-###e) Merchant APIs
+**e) Merchant APIs**
 ----------------
 **Get Merchant Account Balance**-  *Merchant can query his balance*
 
@@ -372,12 +372,12 @@ end
 
 ###### **i) Refunds** 
 A refund in a marketplace ecosystem is a `two` step process:
- Case 1) Merchant Refunding the customer who made the payment.
+ Case 1) Merchant Refunding the customer who made the payment(Payment Gateway Refund).
  Case 2) Merchant collecting the refund back from the seller who sold the good/service.
  
- **Case1** is taken care by the regular *Payment Gateway Refund*
- 
  **Payment Gateway Refund** 
+ _Merchant Refunding the customer who made the payment_
+
 
        transaction_attributes={
         merchantTxnId: "RD-0320837687",
@@ -390,10 +390,10 @@ A refund in a marketplace ecosystem is a `two` step process:
     }
     
     //signature generation
-    #:TODO below helper method pending
-    data="merchantAccessKey=" + "citrus_access_key" + "&transactionId=" + transaction_attributes[:merchantTxnId] + "&amount=" + transaction_attributes[:amount];
-
-    signature=CitrusPayments.hmac_sha1(data, citrus_secret_key)
+    #generate_pg_refund_signature
+   
+    //either send transaction_attributes hash above or be specific like below (for signature generation) 
+    signature=CitrusPayments.utility.generate_pg_refund_signature({merchantTxnId: "RD-0320837687", amount: "12"})
    
     //send request response=CitrusPayments::Marketplace::Refunds::PgRefund.create(signature, transaction_attributes)
 

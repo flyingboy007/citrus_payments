@@ -27,11 +27,11 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Mon, 07 Aug 2017 14:01:38 GMT
+      - Tue, 08 Aug 2017 05:04:52 GMT
       Server:
       - Apache/2.2.15 (Red Hat)
       Set-Cookie:
-      - JSESSIONID=5A1774B6BD8BDF1459CBF6B619F6FBD7.adminnode; Path=/; Secure; HttpOnly
+      - JSESSIONID=184EC23CF0B8A8A9C43FC825DE2A6B0A.adminnode; Path=/; Secure; HttpOnly
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Methods:
@@ -53,5 +53,5 @@ http_interactions:
       string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><noOfTxnsToDisplay>0</noOfTxnsToDisplay><respCode>401</respCode><respMsg>Bad
         Request:Invalid signature key</respMsg><totalTxnCount>0</totalTxnCount></response>
     http_version: 
-  recorded_at: Mon, 07 Aug 2017 14:04:53 GMT
+  recorded_at: Tue, 08 Aug 2017 05:08:08 GMT
 recorded_with: VCR 3.0.3
