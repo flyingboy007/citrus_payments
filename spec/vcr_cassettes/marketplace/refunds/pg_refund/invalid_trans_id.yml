@@ -5,12 +5,12 @@ http_interactions:
     uri: https://sandboxadmin.citruspay.com/api/v2/txn/refund
     body:
       encoding: UTF-8
-      string: '{"merchantTxnId":"RD-0320837687","pgTxnId":"6789994221172191","rrn":"7219386355","authIdCode":"999999","currencyCode":"INR","amount":"12","txnType":"Refund","merchantTxnId":"..."}'
+      string: '{"merchantTxnId":"RD-2845351843","pgTxnId":"7468164562272201","rrn":"722051430779","authIdCode":"999999","currencyCode":"INR","amount":6,"txnType":"Refund","merchantTxnId":"..."}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - application/json
       User-Agent:
       - Ruby
       Host:
@@ -18,20 +18,20 @@ http_interactions:
       Content-Type:
       - application/json
       Signature:
-      - '09aaf70d149d936697168f4114bae861ea01ed8a'
+      - 5a25f3ca655c8781b411122003be24abe02685e9
       Access-Key:
       - 1DYQI8S5EE5UM97AJYKA
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Tue, 08 Aug 2017 05:04:52 GMT
+      - Tue, 08 Aug 2017 18:07:25 GMT
       Server:
       - Apache/2.2.15 (Red Hat)
       Set-Cookie:
-      - JSESSIONID=184EC23CF0B8A8A9C43FC825DE2A6B0A.adminnode; Path=/; Secure; HttpOnly
+      - JSESSIONID=55649BFAEEEE2B4F88D28C9C456F4CF7.adminnode; Path=/; Secure; HttpOnly
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Methods:
@@ -47,11 +47,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Content-Type:
-      - application/xml;charset=UTF-8
+      - application/json;charset=UTF-8
     body:
       encoding: ASCII-8BIT
-      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><noOfTxnsToDisplay>0</noOfTxnsToDisplay><respCode>401</respCode><respMsg>Bad
-        Request:Invalid signature key</respMsg><totalTxnCount>0</totalTxnCount></response>
+      string: '{"respCode":"121","respMsg":"Successful sale transaction doesn''t exists","merchantTxnId":"...","transactionId":null,"pgTxnId":"","authIdCode":"","amount":"","paymentId":null,"cvRespCode":null,"authReceiptNo":null,"captureReceiptNo":null,"refTxnNo":"","currency":"","merchantRefundTxId":null,"rrn":""}'
     http_version: 
-  recorded_at: Tue, 08 Aug 2017 05:08:08 GMT
+  recorded_at: Tue, 08 Aug 2017 18:10:45 GMT
 recorded_with: VCR 3.0.3

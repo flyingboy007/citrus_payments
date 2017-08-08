@@ -38,7 +38,9 @@ module CitrusPayments
 
     #pg refund signature creation
     def self.generate_pg_refund_signature(refund_attributes)
-      data="merchantAccessKey=" + CitrusPayments.configuration.access_key + "&transactionId=" + refund_attributes[:merchantTxnId] + "&amount=" + refund_attributes[:amount];
+      #convert to symbolized hash for consistancy
+      symbolised_attributes=Hash[refund_attributes.map {|k, v| [k.to_sym, v.to_s]}]
+      data="merchantAccessKey=" + CitrusPayments.configuration.access_key + "&transactionId=" + symbolised_attributes[:merchantTxnId] + "&amount=" + symbolised_attributes[:amount];
 
       secret=CitrusPayments.configuration.secret_key
       self.hmac_sha1(data, secret)
