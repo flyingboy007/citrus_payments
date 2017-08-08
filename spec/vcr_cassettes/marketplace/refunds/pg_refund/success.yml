@@ -5,12 +5,12 @@ http_interactions:
     uri: https://sandboxadmin.citruspay.com/api/v2/txn/refund
     body:
       encoding: UTF-8
-      string: '{"merchantTxnId":"RD-0320837687","pgTxnId":"6789994221172191","rrn":"7219386355","authIdCode":"999999","currencyCode":"INR","amount":"12","txnType":"Refund"}'
+      string: '{"merchantTxnId":"RD-2845351843","pgTxnId":"7468164562272201","rrn":"722051430779","authIdCode":"999999","currencyCode":"INR","amount":"6","txnType":"Refund"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - application/json
       User-Agent:
       - Ruby
       Host:
@@ -18,7 +18,7 @@ http_interactions:
       Content-Type:
       - application/json
       Signature:
-      - '09aaf70d149d936697168f4114bae861ea01ed8a'
+      - ce0aa9b4ce326b00c98d7ae4708cfeb0fbb601ff
       Access-Key:
       - 1DYQI8S5EE5UM97AJYKA
   response:
@@ -27,11 +27,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 07 Aug 2017 13:56:35 GMT
+      - Tue, 08 Aug 2017 17:28:56 GMT
       Server:
       - Apache/2.2.15 (Red Hat)
       Set-Cookie:
-      - JSESSIONID=F3CAD6D1A6ACBB6C5F045EF1AB7190D0.adminnode; Path=/; Secure; HttpOnly
+      - JSESSIONID=F76410728F7DA3454936CF4AF40438C2.adminnode; Path=/; Secure; HttpOnly
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Methods:
@@ -47,11 +47,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Content-Type:
-      - application/xml;charset=UTF-8
+      - application/json;charset=UTF-8
     body:
       encoding: ASCII-8BIT
-      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><refundResponse><amount>12.0</amount><authIdCode>999999</authIdCode><currency>INR</currency><merchantRefundTxId>CRX1708071356364540978</merchantRefundTxId><merchantTxnId>RD-0320837687</merchantTxnId><paymentId>-1</paymentId><pgTxnId>429630291972191</pgTxnId><RRN>721917222533</RRN><respCode>0</respCode><respMsg>Transaction
-        successful</respMsg><transactionId>RD-0320837687</transactionId></refundResponse>
+      string: '{"respCode":"0","respMsg":"Transaction successful","merchantTxnId":"RD-2845351843","transactionId":"RD-2845351843","pgTxnId":"3033025022372201","authIdCode":"999999","amount":"6.0","paymentId":"-1","cvRespCode":null,"authReceiptNo":null,"captureReceiptNo":null,"refTxnNo":null,"currency":"INR","merchantRefundTxId":"CRX170808172856726197","rrn":"722051737937"}'
     http_version:
-  recorded_at: Mon, 07 Aug 2017 13:59:52 GMT
+  recorded_at: Tue, 08 Aug 2017 17:32:15 GMT
 recorded_with: VCR 3.0.3
