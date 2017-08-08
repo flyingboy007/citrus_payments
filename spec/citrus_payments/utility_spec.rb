@@ -10,7 +10,7 @@ describe CitrusPayments::Utility do
       }
       data=CitrusPayments.configuration.vanity_url + attributes[:orderAmount] + attributes[:merchantTxnId] + attributes[:currency]
       signature = hmac_sha1(data, CitrusPayments.configuration.secret_key)
-      expect(signature).to eq(CitrusPayments::Utility.generate_signature(attributes))
+      expect(signature).to eq(CitrusPayments::Utility.generate_payment_signature(attributes))
     end
 
     it "returns true if signature valid" do
@@ -29,7 +29,7 @@ describe CitrusPayments::Utility do
       }
 
 
-      response=CitrusPayments::Utility.verify_signature(payment_response)
+      response=CitrusPayments::Utility.verify_payment_signature(payment_response)
 
       expect(response).to eq(true)
 
@@ -50,18 +50,28 @@ describe CitrusPayments::Utility do
           signature: '_tampered_signature'*4
       }
 
-      response=CitrusPayments::Utility.verify_signature(payment_response)
+      response=CitrusPayments::Utility.verify_payment_signature(payment_response)
       expect(response).to eq(false)
     end
   end
 
-  private
-  #helper method for making digest
-  def hmac_sha1(data, secret)
-    require 'base64'
-    require 'cgi'
-    require 'openssl'
-    hmac = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), secret.encode('ASCII'), data.encode('ASCII'))
-    return hmac
+  context "PgRefund signature creation" do
+    it "generates a valid refund signature for sending to citrus" do
+      refund_attributes={
+          merchantTxnId: "RD-0320837687",
+          pgTxnId: "6789994221172191",
+          rrn: "7219386355",
+          authIdCode: "999999",
+          currencyCode: "INR",
+          amount: "12",
+          txnType: "Refund"
+      }
+
+      data="merchantAccessKey=" + CitrusPayments.configuration.access_key + "&transactionId=" + refund_attributes[:merchantTxnId] + "&amount=" + refund_attributes[:amount];
+      valid_refund_signature=hmac_sha1(data, CitrusPayments.configuration.secret_key)
+      expect(valid_refund_signature).to eq(CitrusPayments::Utility.generate_pg_refund_signature(refund_attributes))
+    end
+
   end
+
 end

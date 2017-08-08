@@ -12,8 +12,6 @@ describe CitrusPayments::Marketplace::Refunds::PgRefund do
         amount: "12",
         txnType: "Refund"
     }
-    data="merchantAccessKey=" + ENV['CITRUS_ACCESS_KEY'] + "&transactionId=" + refund_attributes[:merchantTxnId] + "&amount=" + refund_attributes[:amount];
-    valid_signature=hmac_sha1(data, ENV['CITRUS_SECRET_KEY'])
 
     it 'returns error if invalid token' do
       VCR.use_cassette('marketplace/refunds/pg_refund/failure_token') do
@@ -23,6 +21,7 @@ describe CitrusPayments::Marketplace::Refunds::PgRefund do
     end
 
     it 'returns success if refunded' do
+      valid_signature=CitrusPayments::Utility.generate_pg_refund_signature(refund_attributes)
       VCR.use_cassette('marketplace/refunds/pg_refund/success') do
         response=CitrusPayments::Marketplace::Refunds::PgRefund.create(valid_signature, refund_attributes)
         expect(response[:respMsg]).to eq("Transaction successful")
@@ -33,8 +32,8 @@ describe CitrusPayments::Marketplace::Refunds::PgRefund do
       VCR.use_cassette("marketplace/refunds/pg_refund/invalid_trans_id") do
         altered_trans_id=refund_attributes.clone
         altered_trans_id['merchantTxnId']="..."
-        data_with_error="merchantAccessKey=" + ENV['CITRUS_ACCESS_KEY'] + "&transactionId=" + altered_trans_id[:merchantTxnId] + "&amount=" + altered_trans_id[:amount];
-        new_signature=hmac_sha1(data_with_error, ENV['CITRUS_SECRET_KEY'])
+        new_signature= CitrusPayments::Utility.generate_pg_refund_signature(altered_trans_id)
+
         response=CitrusPayments::Marketplace::Refunds::PgRefund.create(new_signature, altered_trans_id)
         expect(response[:respMsg]).to eq("Bad Request:Invalid signature key")
         puts response
