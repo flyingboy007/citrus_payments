@@ -14,6 +14,8 @@ describe CitrusPayments::Marketplace::Refunds::PgRefund do
     }
 
     it 'returns success if refunded' do
+
+      #puts CitrusPayments::Utility.generate_pg_refund_signature(merchantTxnId:"RD-6191651979", amount: 6)
       valid_signature=CitrusPayments::Utility.generate_pg_refund_signature(refund_attributes)
       VCR.use_cassette('marketplace/refunds/pg_refund/success') do
         response=CitrusPayments::Marketplace::Refunds::PgRefund.create(valid_signature, refund_attributes)

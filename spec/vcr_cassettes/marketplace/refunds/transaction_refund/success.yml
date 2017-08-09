@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://splitpaysbox.citruspay.com/marketplace/trans/transrefund/
+    body:
+      encoding: UTF-8
+      string: '{"trans_id":114413,"refund_amount":6,"refund_ref":"RD-6191651979_Refund","pg_refund_charge":0,"refund_datetime":"2017-08-09
+        12:00:28"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - splitpaysbox.citruspay.com
+      Content-Type:
+      - application/json
+      Auth-Token:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wOC0xMlQwNToyNTowNS42NTFaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.jhghjtqWczvGhZAU1Z8zpNPiZZc5aIY7MyafkenZ-u8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 09 Aug 2017 06:15:58 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"37-5dfd75eb"
+      Via:
+      - 1.1 splitpaysbox.citruspay.com (Apache/2.2.15)
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '66'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"refund_id":31431,"trans_id":114413,"refund_amount":6}'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 06:15:59 GMT
+recorded_with: VCR 3.0.3

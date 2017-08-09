@@ -372,11 +372,14 @@ end
 
 ###### **i) Refunds** 
 A refund in a marketplace ecosystem is a `two` step process:
- Case 1) Merchant Refunding the customer who made the payment(Payment Gateway Refund).
- Case 2) Merchant collecting the refund back from the seller who sold the good/service.
  
- **Payment Gateway Refund** 
- _Merchant Refunding the customer who made the payment_
+ **Case 1)** Merchant Refunding the customer who made the payment(Payment Gateway Refund).
+ 
+ **Case 2)** Merchant collecting the refund back from the seller who sold the good/service.
+ 
+ **Payment Gateway Refund**  (mandatory for all usecases)
+ 
+  _Merchant Refunding the customer who made the payment_
 
 
        transaction_attributes={
@@ -409,6 +412,47 @@ A refund in a marketplace ecosystem is a `two` step process:
      failure_response
      
     {:noOfTxnsToDisplay=>"0", :respCode=>"401", :respMsg=>"Bad Request:Invalid signature key", :totalTxnCount=>"0"}
+    
+**Splitpay Refunds** _(only needed if using splitpay)_
+
+ _If using splitpay call either one below after calling Payment Gateway Refund._
+ 
+ **Two posibilities for splitpay**
+  
+  1)already been `split` , but is either awaiting release/ has already been released.
+     A `split refund` is to be performed on such transaction
+      `Split Refunds`- when a transaction has already been split. This API can be called post payout to sellers too(which will adjust in subsequent payouts)
+  2) still `un-split` in the Citrus Splitpay system.
+     A `trans refund` is to be performed in this scenario. 
+      `Transaction Refund`-called for Refunds when a transaction has `not` been `split` yet.
+    
+ **Transaction Refund**(optional)
+ _
+ For Refunds when a transaction has not been split yet_
+
+
+    transaction_attributes={
+        trans_id: 114413,
+        refund_amount: 6,
+        refund_ref: 'RD-6191651979_Refund',
+        pg_refund_charge: 0,
+        refund_datetime: '2017-08-09 12:00:28'
+    }
+    
+    //send request 
+    response=CitrusPayments::Marketplace::Refunds::PgRefund.create(transaction_attributes)
+
+
+
+--------
+
+     success_response
+        
+    {"refund_id":31431,"trans_id":114413,"refund_amount":6}
+        
+     failure_response
+     
+    {"error_id":"7","error_category":"application","error_description":"trans_id is not of a type(s) number"}
 
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
@@ -432,17 +476,7 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 
 
 ###### i) Refunds (This section needs more planning)
-A refund in a marketplace ecosystem is a `two` step process:
- Case 1) Merchant Refunding the customer who made the payment.
- Case 2) Merchant collecting the refund back from the seller who sold the good/service.
-   
- **Case2** (*2 posibilities*)
-  1)already been `split` , but is either awaiting release/ has already been released.
-     A `split refund` is to be performed on such transaction
-      `Split Refunds`- when a transaction has already been split. This API can be called post payout to sellers too(which will adjust in subsequent payouts)
-  2) still `un-split` in the Citrus Splitpay system.
-     A `trans refund` is to be performed in this scenario. 
-      `Transaction Refund`-called for Refunds when a transaction has `not` been `split` yet.
+
 
 
 
