@@ -72,9 +72,9 @@ end
 ---
 
     
-    #success response  {"auth_token"=>"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMFQxMDo0MToyMy4zNjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.W_LhFZl-h9F5j3NhH3os3zEi8BNRkXl3MnwniveHRb4"}
+    ##success response  {"auth_token"=>"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiMURZUUk4UzVFRTVVTTk3QUpZS0EiLCJleHBpcmVzIjoiMjAxNy0wNy0yMFQxMDo0MToyMy4zNjJaIiwiY2FuX3RyYW5zYWN0IjoxLCJhZG1pbiI6MH0.W_LhFZl-h9F5j3NhH3os3zEi8BNRkXl3MnwniveHRb4"}
     
-    #error response
+    ##error response
     {"error_id"=>"0", "error_category"=>"application", "error_description"=>"Invalid user"}
 
 
@@ -100,10 +100,10 @@ end
 
 --------
 
-    success_response
+    ##success_response
     {:sellerid=>3260}
     
-    failure_response
+    ##failure_response
     
     {:error_id=>"4", :error_category=>"application", :error_description=>"Invalid user Token"}
 
@@ -133,10 +133,10 @@ end
 --------
 
     
-    success_response
+    ##success_response
     {:sellerid=>3260, :status=>"success"}
     
-    failure_response
+    ##failure_response
     
     {:error_id=>"4", :error_category=>"application", :error_description=>"Invalid user Token"}
 
@@ -150,11 +150,11 @@ end
 
 --------
 
-    success_response
+    ##success_response
     
     {"seller_id":3260,"seller_name":"Fake_Name","seller_add1":"Fake_Street","seller_add2":"","seller_city":"Fake_City","seller_state":"Fake_state","seller_country":"Fake_country","seller_zip":"690001","business_url":"undefined","selleremail":"fake1@gmail.com","seller_ifsc_code":"ICIC0000011","seller_acc_num":"Fake_account_number","payoutmode":"NEFT","seller_account_id":4699,"seller_active":1,"seller_mobile":"1234567899","seller_mobile_verified":0,"sms_notify":0,"seller_email_verified":0,"email_notify":0,"kyc_status":0,"is_international":0,"currency":"INR"}
     
-    failure_response
+    ##failure_response
     
     {:error_id=>"210", :error_category=>"application", :error_description=>"No
         sellers found!!!"}
@@ -170,7 +170,7 @@ end
 
      
     
-       success_response
+       ##success_response
             
             [{
         "seller_id": 463,
@@ -207,7 +207,7 @@ end
         "seller_active": "1"
         }]
             
-     failure_response
+     ##failure_response
             
     {"error_id":"4","error_category":"application","error_description":"Invalid_user Token"}
 
@@ -230,11 +230,11 @@ end
 --------
 
     
-    success_response
+    ##success_response
         
         {"split_id":92437,"trans_id":105573,"merchant_split_ref":"ref"}
         
-    failure_response
+    ##failure_response
         
     {"error_id":"313","error_category":"application","error_description":"Invalid
             Transaction Id!!!"}
@@ -256,11 +256,11 @@ end
 --------
 
     
-    success_response
+    ##success_response
         
     {"split_id":92437,"changedRows":1}
         
-    failure_response
+    ##failure_response
         
     {"error_id":"330","error_category":"application","error_description":"Invalid
         Split Id!!!"}
@@ -274,11 +274,11 @@ end
 
 --------
 
-     success_response
+     ##success_response
         
         {"split_id":92437,"trans_id":105573,"seller_id":3260,"merchant_split_ref":"ref","split_amount":11,"fee_amount":1,"auto_payout":0,"req_datetime":"2017-07-18T18:10:25.000Z","fundReleased":[],"refunds":[]}
         
-     failure_response
+     ##failure_response
         
     {"error_id":"322","error_category":"application","error_description":"No
             split information found!!!"}
@@ -321,11 +321,11 @@ end
 
 --------
 
-     success_response
+     ##success_response
         
       {"settlement_id":38268,"trans_id":105573}
         
-     failure_response
+     ##failure_response
      
     {"error_id":"7","error_category":"application","error_description":"settlement_amount is not of a type(s) number"}
 
@@ -342,12 +342,12 @@ end
 
 --------
 
-     success_response
+     ##success_response
         
       {"settlement_id":38273,"trans_id":110696,"settlement_ref":"5821744918","trans_source":"CITRUS","settlement_amount":11,"fee_amount":1,"settlement_date_time":"24/07/2017
         17:10:18","req_date_time":"24/07/2017 17:10:20"}
         
-     failure_response
+     ##failure_response
      
     {"error_id":"518","error_category":"application","error_description":"No
         settlement details found for this transaction!!!"}
@@ -361,11 +361,11 @@ end
 
 --------
 
-     success_response
+     ##success_response
         
       {"releasefund_ref":37267,"trans_id":110696,"split_id":97434,"seller_id":2153,"amount":11,"payoutmode":"NEFT","payout":"true"}
         
-     failure_response
+     ##failure_response
      
     {"error_id":"7","error_category":"application","error_description":"split_id is not of a type(s) number"}
 
@@ -392,24 +392,24 @@ A refund in a marketplace ecosystem is a `two` step process:
         txnType: "Refund"
     }
     
-    //signature generation
+    ##signature generation
     #generate_pg_refund_signature
    
-    //either send transaction_attributes hash above or be specific like below (for signature generation) 
+    ##either send transaction_attributes hash above or be specific like below (for signature generation) 
     signature=CitrusPayments.utility.generate_pg_refund_signature({merchantTxnId: "RD-0320837687", amount: "12"})
    
-    //send request response=CitrusPayments::Marketplace::Refunds::PgRefund.create(signature, transaction_attributes)
+    ##send request response=CitrusPayments::Marketplace::Refunds::PgRefund.create(signature, transaction_attributes)
 
 
 
 --------
 
-     success_response
+     ##success_response
         
       {:amount=>"12.0", :authIdCode=>"999999", :currency=>"INR", :merchantRefundTxId=>"CRX1708071356364540978", :merchantTxnId=>"RD-0320837687", :paymentId=>"-1", :pgTxnId=>"429630291972191", :RRN=>"721917222533", :respCode=>"0", :respMsg=>"Transaction successful", :transactionId=>"RD-0320837687"}
 
         
-     failure_response
+     ##failure_response
      
     {:noOfTxnsToDisplay=>"0", :respCode=>"401", :respMsg=>"Bad Request:Invalid signature key", :totalTxnCount=>"0"}
     
@@ -439,20 +439,51 @@ A refund in a marketplace ecosystem is a `two` step process:
         refund_datetime: '2017-08-09 12:00:28'
     }
     
-    //send request 
-    response=CitrusPayments::Marketplace::Refunds::PgRefund.create(transaction_attributes)
+    ##send request 
+    response=CitrusPayments::Marketplace::Refunds::TransRefund.create(transaction_attributes)
 
 
 
 --------
 
-     success_response
+     ##success_response
         
     {"refund_id":31431,"trans_id":114413,"refund_amount":6}
         
-     failure_response
+     ##failure_response
      
     {"error_id":"7","error_category":"application","error_description":"trans_id is not of a type(s) number"}
+
+
+**Split Refund**(optional)
+
+ *For Refunds when a transaction has not been split yet*
+
+
+    transaction_attributes={
+        split_id:101126,
+        refund_ref:"RD-4292297693",
+        pg_refund_charge:0,
+        refund_datetime:"2017-08-08 2:33:00"
+    }
+    
+    ##send request 
+    response=CitrusPayments::Marketplace::Refunds::SplitRefund.create(transaction_attributes)
+
+
+
+--------
+
+     ##success_response
+        
+    {"refund_id":31464,"trans_id":114443,"split_id":101126,"refund_amount":6}
+        
+     ##failure_response
+     
+    {"error_id":"7","error_category":"application","error_description":"split_id is not of a type(s) number"}
+
+
+
 
 
 TODO: Planned features(**Below features are planned and will be added as implemented**)
@@ -472,12 +503,6 @@ TODO: Planned features(**Below features are planned and will be added as impleme
 ###### d) Split APIs 
 
    3) Get All Transactions Split- Merchant can query all splits performed on a specific transaction using this API
-
-
-
-###### i) Refunds (This section needs more planning)
-
-
 
 
 ## Development

@@ -14,7 +14,8 @@ require "citrus_payments/marketplace/split"
 require "citrus_payments/marketplace/settlement"
 require "citrus_payments/marketplace/transaction"
 require "citrus_payments/marketplace/refunds/pg_refund"
-require "citrus_payments/marketplace/refunds/transaction_refund"
+require "citrus_payments/marketplace/refunds/trans_refund"
+require "citrus_payments/marketplace/refunds/split_refund"
 
 
 module CitrusPayments
