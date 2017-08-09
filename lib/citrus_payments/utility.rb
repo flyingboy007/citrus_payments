@@ -14,7 +14,7 @@ module CitrusPayments
     #decode signature
     def self.verify_payment_signature(attributes)
       #convert to symbolized hash for consistancy
-      symbolised_attributes=Hash[attributes.map {|k, v| [k.to_sym, v]}]
+      symbolised_attributes=Hash[attributes.map {|k, v| [k.to_sym, v.to_s]}]
 
       secret_key=CitrusPayments.configuration.secret_key
       verification_data= symbolised_attributes[:TxId]\

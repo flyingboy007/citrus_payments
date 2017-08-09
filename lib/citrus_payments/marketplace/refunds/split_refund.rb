@@ -1,9 +1,9 @@
 module CitrusPayments
   module Marketplace
     module Refunds
-      class TransactionRefund
+      class SplitRefund
         def self.create(merchant_auth_token, refund_attributes)
-          uri = URI.parse(CitrusPayments.configuration.base_url+'marketplace/trans/transrefund/')
+          uri = URI.parse(CitrusPayments.configuration.base_url+'marketplace/trans/splitrefund/')
           request = Net::HTTP::Post.new(uri)
           request.content_type = 'application/json'
           request['Auth_token']= merchant_auth_token
