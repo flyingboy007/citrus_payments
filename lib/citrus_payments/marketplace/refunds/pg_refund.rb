@@ -3,6 +3,11 @@ module CitrusPayments
     module Refunds
       class PgRefund
         def self.create(merchant_auth_token, refund_attributes)
+          #check if all required fields are passed in
+          [:merchantTxnId, :pgTxnId, :rrn, :authIdCode, :currencyCode, :amount, :txnType].each do |arg|
+            raise CitrusPayments::Errors::Input, ":#{arg} option required" if refund_attributes[arg].nil?
+          end
+
           #changing url based on sandbox/production(this one have a diferent url than others)
           url= CitrusPayments.configuration.base_url.include?("splitpaysbox") ? 'https://sandboxadmin.citruspay.com/api/v2/txn/refund' : 'https://admin.citruspay.com/api/v2/txn/refund'
           uri = URI.parse(url)
