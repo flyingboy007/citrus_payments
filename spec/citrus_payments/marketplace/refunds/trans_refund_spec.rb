@@ -34,6 +34,15 @@ describe CitrusPayments::Marketplace::Refunds::TransRefund do
       end
     end
 
+    it "throws input error when params missing" do
+      refund_attributes_sample={
+          refund_ref: 'RD-6191651979_Refund',
+          pg_refund_charge: 0,
+          refund_datetime: '2017-08-09 12:00:28'
+      }
+      expect{CitrusPayments::Marketplace::Refunds::TransRefund.create(valid_auth_token, refund_attributes_sample)}.to  raise_error(CitrusPayments::Errors::Input)
+    end
+
   end
 
 

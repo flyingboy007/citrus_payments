@@ -3,6 +3,10 @@ module CitrusPayments
     module Refunds
       class TransRefund
         def self.create(merchant_auth_token, refund_attributes)
+          #check if all required fields are passed in
+          [:trans_id, :refund_amount, :refund_ref, :pg_refund_charge, :refund_datetime].each do |arg|
+            raise CitrusPayments::Errors::Input, ":#{arg} option required" if refund_attributes[arg].nil?
+          end
           uri = URI.parse(CitrusPayments.configuration.base_url+'marketplace/trans/transrefund/')
           request = Net::HTTP::Post.new(uri)
           request.content_type = 'application/json'
@@ -25,7 +29,7 @@ module CitrusPayments
           else
             parsed_response
           end
-      end
+        end
       end
     end
   end

@@ -31,5 +31,19 @@ describe CitrusPayments::Marketplace::Refunds::PgRefund do
       end
     end
 
+    it "throws input error when params missing" do
+      valid_signature=CitrusPayments::Utility.generate_pg_refund_signature(refund_attributes)
+
+      refund_attributes_sample={
+          pgTxnId: "7468164562272201",
+          rrn: "722051430779",
+          authIdCode: "999999",
+          currencyCode: "INR",
+          amount: 6,
+          txnType: "Refund"
+      }
+      expect{CitrusPayments::Marketplace::Refunds::PgRefund.create(valid_signature, refund_attributes_sample)}.to  raise_error(CitrusPayments::Errors::Input)
+    end
+
   end
 end

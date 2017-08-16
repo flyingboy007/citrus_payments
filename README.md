@@ -396,7 +396,7 @@ A refund in a marketplace ecosystem is a `two` step process:
     #generate_pg_refund_signature
    
     ##either send transaction_attributes hash above or be specific like below (for signature generation) 
-    signature=CitrusPayments.utility.generate_pg_refund_signature({merchantTxnId: "RD-0320837687", amount: "12"})
+    signature=CitrusPayments::utility.generate_pg_refund_signature({merchantTxnId: "RD-0320837687", amount: "12"})
    
     ##send request response=CitrusPayments::Marketplace::Refunds::PgRefund.create(signature, transaction_attributes)
 

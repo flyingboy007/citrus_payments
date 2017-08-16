@@ -33,6 +33,15 @@ describe CitrusPayments::Marketplace::Refunds::SplitRefund do
       end
     end
 
+    it "throws input error when params missing" do
+      refund_attributes_sample={
+          refund_ref:"RD-4292297693",
+          pg_refund_charge:0,
+          refund_datetime:"2017-08-08 2:33:00"
+      }
+      expect{CitrusPayments::Marketplace::Refunds::SplitRefund.create(valid_auth_token, refund_attributes_sample)}.to  raise_error(CitrusPayments::Errors::Input)
+    end
+
   end
 
 
